@@ -65,8 +65,8 @@ local function setup(fnMessageHandler, strHostname, lsProtocols)
 end
 
 -- Start the server
--- - strPreferredModem: The modedem to run the server out of, if none is
--- specified, the first available one will be opened and used.
+-- - strPreferredModem: The modem to run the server out of. If none is
+-- specified, the first available modem will be opened and used.
 local function start(strPreferredModem)
     for i=1, #PROTOCOLS do
         print("-> Hosting "..HOSTNAME..":"..PROTOCOLS[i])
