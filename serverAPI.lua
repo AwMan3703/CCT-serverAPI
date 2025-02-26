@@ -8,19 +8,6 @@ local MessageHandler
 
 -- UTILITY
 
-local function save_table(t, path)
-    local file = fs.open(path,"w")
-    file.write(textutils.serialize(t))
-    file.close()
-end
-
-local function load_table(path)
-    local file = fs.open(path,"r")
-    local data = file.readAll()
-    file.close()
-    return textutils.unserialize(data)
-end
-
 function table.contains(table, element)
     for _, value in pairs(table) do
       if value == element then return true end
