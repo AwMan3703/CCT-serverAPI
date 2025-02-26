@@ -28,6 +28,8 @@ local function mainLoop(nIteration)
     print('Iteration '..nIteration)
     local senderID, message, protocol = rednet.receive(nil, 5)
 
+    if not senderID then return end
+
     if not table.contains(PROTOCOLS, protocol) then
         printError('Received message under unsupported protocol "'..protocol..'" — ignoring.')
         return
@@ -61,9 +63,9 @@ local function start(strPreferredModem)
     end
 
     if strPreferredModem then MODEM = peripheral.wrap(strPreferredModem)
-    else MODEM = peripheral.find("modem")[1] end
+    else MODEM = table.pack(peripheral.find("modem"))[1] end
     print("Starting server from modem: "..peripheral.getName(MODEM))
-    rednet.open(MODEM)
+    rednet.open(peripheral.getName(MODEM))
 
     local iterationCount = 0
     while true do
